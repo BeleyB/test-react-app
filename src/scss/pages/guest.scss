@@ -1,0 +1,20 @@
+
+
+.guest-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to top left, #{$blue}, #{$cyan});
+
+    .card {
+        border: 0;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    }
+}
+
+
+.guest-card {
+    color: #FFF;
+    background-image: linear-gradient(to bottom right, #{$blue}, #{$cyan});
+}
