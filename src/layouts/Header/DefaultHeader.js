@@ -1,20 +1,17 @@
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Navbar, Nav } from 'react-bootstrap'
+import { ROUTE_HOME, ROUTE_POSTS, ROUTE_PROFILE, ROUTE_USERS } from '../../api/routes';
 
 export const DefaultHeader = () => {
     return (
-        <div></div>
-        // <Navbar bg="dark" variant="dark">
-        //     <Link className="navbar-brand" to="#home">Logo</Link>
-        //     <Nav className="mr-auto">
-        //         <Link to="/" className="nav-link">Home</Link>
-        //         <Link to="/page1" className="nav-link">Page 1</Link>
-        //         <Link to="/page2" className="nav-link">Page 2</Link>
-        //         <Link to="/page3" className="nav-link">Page 3</Link>
-        //     </Nav>
-        //     <Form inline>
-        //         <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-        //         <Button variant="outline-info">Search</Button>
-        //     </Form>
-        // </Navbar>
+        <Navbar bg="dark" variant="dark">
+            <Link className="navbar-brand" to={ROUTE_HOME}>Logo</Link>
+            <Nav className="mr-auto">
+                <Link to={ROUTE_HOME} className="nav-link">Home</Link>
+                <Link to={ROUTE_PROFILE} className="nav-link">Profile</Link>
+                <Link to={ROUTE_USERS} className="nav-link">Users</Link>
+                <Link to={ROUTE_POSTS} className="nav-link">Posts</Link>
+            </Nav>
+        </Navbar>
     )
 }

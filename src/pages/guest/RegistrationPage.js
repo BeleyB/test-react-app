@@ -3,9 +3,9 @@ import { withFormik } from 'formik'
 import FormField from '../../components/Form/FormField'
 import { Button, Form, Card } from 'react-bootstrap';
 import * as Yup from "yup"
-import { auth } from '../../store/actions/auth'
 import { Link } from "react-router-dom"
 import { ROUTE_LOGIN } from '../../api/routes';
+import { register } from '../../store/actions/register';
 
 
 
@@ -79,7 +79,7 @@ const RegistrationFormWithFormic = withFormik({
     validationSchema: SignupSchema,
 
     handleSubmit: async (values, { props, setSubmitting }) => {
-        const res = await props.dispatch(auth(values));
+        const res = await props.dispatch(register(values));
 
         setTimeout(() => {
             setSubmitting(false);

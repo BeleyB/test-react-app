@@ -3,22 +3,37 @@ import { Switch } from 'react-router-dom';
 import { DefaultLayout } from './layouts/DefaultLayout';
 import { Route, Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import { MainPage } from './pages/main/MainPage';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { GuestLayout } from './layouts/GuestLayout';
 import LoginPage from './pages/guest/LoginPage';
 import RegistrationPage from './pages/guest/RegistrationPage';
-import { ROUTE_LOGIN, ROUTE_SIGNUP } from './api/routes';
+import { ROUTE_HOME, ROUTE_LOGIN, ROUTE_POSTS, ROUTE_PROFILE, ROUTE_SIGNUP, ROUTE_USERS } from './api/routes';
+import { useEffect } from 'react';
+import { auth, autoLogin } from './store/actions/auth';
+import { UserPage } from './pages/main/UserPage';
+import { UsersPage } from './pages/main/UsersPage';
+import { PostsPage } from './pages/main/PostsPage';
 
 
 
 function App() {
-  const user = useSelector(state => state.user);
+  const auth = useSelector(state => state.auth);
+  const dispatch = useDispatch();
 
-  const app = (!!user.id) ? (
+  useEffect(() => {
+    dispatch(autoLogin())
+  }, []);
+
+  // console.log(auth);
+
+  const app = (!!auth.token) ? (
     <DefaultLayout>
       <Switch>
-        <Route path="/" exact component={MainPage} />
-        <Redirect to="/" />
+        <Route path={ROUTE_HOME} exact component={MainPage} />
+        <Route path={ROUTE_PROFILE} component={UserPage} />
+        <Route path={ROUTE_USERS} component={UsersPage} />
+        <Route path={ROUTE_POSTS} component={PostsPage} />
+        <Redirect to={ROUTE_HOME} />
       </Switch>
     </DefaultLayout>
   ) : (
@@ -33,7 +48,7 @@ function App() {
 
   return (
     <>
-      { app }
+      { app}
     </>
   );
 }
