@@ -1,6 +1,6 @@
 import AxiosInstance from '../../axios';
-import { ROUTE_LOGIN } from '../../api/routes';
 import { AUTH_SUCCESS } from './actionsTypes';
+import { API_LOGIN } from '../../api/api';
 
 export function auth({ email, password }) {
     return dispatch => {
@@ -9,7 +9,7 @@ export function auth({ email, password }) {
             returnSecureToken: true
         }
 
-        AxiosInstance.post(ROUTE_LOGIN, authData)
+        AxiosInstance.post(API_LOGIN, authData)
         .then(r => {
             console.log('ok', r.data);
         })
@@ -17,9 +17,7 @@ export function auth({ email, password }) {
             console.log('error', e.response.data.message);
         });
 
-
         // console.log(data);
-
         // const expirationDate = new Date(new Date().getTime() + data.expiresIn * 1000)
 
         // localStorage.setItem('token', data.idToken)

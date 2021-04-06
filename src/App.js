@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { GuestLayout } from './layouts/GuestLayout';
 import LoginPage from './pages/guest/LoginPage';
 import RegistrationPage from './pages/guest/RegistrationPage';
+import { ROUTE_LOGIN, ROUTE_SIGNUP } from './api/routes';
 
 
 
@@ -23,9 +24,9 @@ function App() {
   ) : (
     <GuestLayout>
       <Switch>
-        <Route path="/" exact component={LoginPage} />
-        <Route path="/registration" exact component={RegistrationPage} />
-        <Redirect to="/" />
+        <Route path={ROUTE_LOGIN} exact component={LoginPage} />
+        <Route path={ROUTE_SIGNUP} exact component={RegistrationPage} />
+        <Redirect to={ROUTE_LOGIN} />
       </Switch>
     </GuestLayout>
   );

@@ -1,9 +1,9 @@
 
 
 
-export const ROUTE_LOGIN = 'auth/login';
-export const ROUTE_LOGOUT = 'auth/logout';
-export const ROUTE_SIGNUP = 'auth/singup';
+export const ROUTE_LOGIN = '/';
+export const ROUTE_LOGOUT = '/logout';
+export const ROUTE_SIGNUP = '/singup';
 
 
 
